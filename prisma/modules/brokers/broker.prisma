@@ -1,0 +1,9 @@
+model Broker {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @db.VarChar(200)
+  createdAt DateTime @default(now())
+
+  organizations OrganizationBroker[]
+
+  @@map("brokers")
+}

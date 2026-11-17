@@ -1,0 +1,20 @@
+enum DocumentStatus {
+  UPLOADED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+}
+
+model Document {
+  id           String         @id @default(uuid()) @db.Uuid
+  originalName String         @db.VarChar(255)
+  storageKey   String         @db.VarChar(500)
+  mimeType     String         @db.VarChar(150)
+  size         BigInt
+  status       DocumentStatus @default(UPLOADED)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("documents")
+}
